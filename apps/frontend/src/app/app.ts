@@ -1,13 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcome } from './nx-welcome';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
-  imports: [NxWelcome, RouterModule],
+  imports: [RouterModule],
   selector: 'app-root',
-  templateUrl: './app.html',
-  styleUrl: './app.scss',
+  template: `
+  <router-outlet></router-outlet>
+  <button (click)="test()">test</button>
+  `,
 })
 export class App {
-  protected title = 'frontend';
+  readonly #http = inject(HttpClient);
+
+  test(): void {
+    this.#http.get('/api/messages').subscribe(console.log);
+  }
 }
