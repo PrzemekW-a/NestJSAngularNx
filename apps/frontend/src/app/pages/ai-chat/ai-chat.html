@@ -1,0 +1,14 @@
+<div class="container">
+  <main class="messages">
+
+  </main>
+  <form class="text-input" [formGroup]="form" (ngSubmit)="sendMsg()">
+    <mat-form-field class="user-input">
+      <mat-label [hidden]="true"></mat-label>
+      <input [formControlName]="'userMsg'" matInput type="text">
+    </mat-form-field>
+    <button mat-button aria-label="Send">
+      <mat-icon>send</mat-icon>
+    </button>
+  </form>
+</div>

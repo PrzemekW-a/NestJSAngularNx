@@ -1,8 +1,14 @@
 body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
-  background: #343434;
+  background: #1a1a1a;
   color: darkorange;
   min-height: 100dvh;
   min-width: 100dvw;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
