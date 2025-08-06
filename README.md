@@ -11,6 +11,13 @@
 [Click here to finish setting up your workspace!](https://cloud.nx.app/connect/T9ynREQJbe)
 
 
+## To start the apps
+
+```
+nx serve api
+nx serve frontend
+```
+
 ## Run tasks
 
 To run the dev server for your app, use:
