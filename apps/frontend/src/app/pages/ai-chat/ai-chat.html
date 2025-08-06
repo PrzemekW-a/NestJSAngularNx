@@ -5,7 +5,7 @@
   <form class="text-input" [formGroup]="form" (ngSubmit)="sendMsg()">
     <mat-form-field class="user-input">
       <mat-label [hidden]="true"></mat-label>
-      <input [formControlName]="'userMsg'" matInput type="text">
+      <input [formControlName]="'userMsg'" matInput type="text" placeholder="Type your message">
     </mat-form-field>
     <button mat-button aria-label="Send">
       <mat-icon>send</mat-icon>
