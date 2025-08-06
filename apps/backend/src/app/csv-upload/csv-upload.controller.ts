@@ -1,4 +1,8 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { Express } from 'express'
+import { Multer } from 'multer';
+
 
 @Controller('csv-upload')
 export class CsvUploadController {
@@ -8,8 +12,21 @@ export class CsvUploadController {
   }
 
   @Post()
-  postMessages(@Body() message: { text: string }): string {
-    console.log('Otrzymano wiadomość POST na backendzie:', message.text);
-    return `Backend otrzymał wiadomość: "${message.text}"`;
+  @UseInterceptors(FileInterceptor('file'))
+  async uploadCsv(@UploadedFile() file: Express.Multer.File) {
+    if (!file) {
+      return { message: 'No file uploaded' };
+    }
+
+    console.log('Otrzymano plik:', {
+      originalname: file.originalname,
+      size: file.size,
+      mimetype: file.mimetype
+    });
+
+    return {
+      message: 'Plik został pomyślnie przesłany',
+      filename: file.originalname
+    };
   }
 }

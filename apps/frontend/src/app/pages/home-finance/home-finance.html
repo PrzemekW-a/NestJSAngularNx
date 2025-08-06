@@ -1,0 +1,4 @@
+<input #csvUploader type="file" accept=".csv" (change)="fileChange($event)"/>
+<p>{{ file()?.name || 'no file' }}</p>
+<button (click)="reset()">remove</button>
+<button (click)="submitCsv()">submit</button>
